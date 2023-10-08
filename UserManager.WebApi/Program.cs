@@ -1,14 +1,20 @@
+using UserManager.Business.IoC;
 using UserManager.Data.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
 builder.Services.AddRepositories();
 
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureDbContext();
+
+builder.Services.ConfigureAutoMapper();
+builder.Services.ConfigureFluentValidation();
+builder.Services.AddServices();
+
+builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
