@@ -7,6 +7,7 @@ namespace UserManager.Data.Contexts.Contracts
     {
         DbSet<User> Users { get; set; }
         DbSet<Role> Roles { get; set;}
+        DbSet<RoleUser> RoleUsers { get; set; }
 
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
