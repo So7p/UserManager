@@ -14,19 +14,19 @@ namespace UserManager.Data.Repositories.Implementation
         public override async Task<IEnumerable<User>> GetAllAsync() =>
             await appContext.Set<User>()
             .AsNoTracking()
-            .Include(u => u.Roles)
+            .Include(u => u.RoleUsers)
             .ToListAsync();
 
         public override async Task<User?> GetByIdAsync(int id) =>
             await appContext.Set<User>()
             .AsNoTracking()
-            .Include(u => u.Roles)
+            .Include(u => u.RoleUsers)
             .FirstOrDefaultAsync(u => u.Id == id);
 
         public async Task<User?> GetByEmailAsync(string email) =>
             await appContext.Set<User>()
             .AsNoTracking()
-            .Include(u => u.Roles)
+            .Include(u => u.RoleUsers)
             .FirstOrDefaultAsync(u => u.Email == email);
     }
 }

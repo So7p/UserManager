@@ -14,13 +14,13 @@ namespace UserManager.Data.Repositories.Implementation
         public override async Task<IEnumerable<Role>> GetAllAsync() =>
             await appContext.Set<Role>()
             .AsNoTracking()
-            .Include(r => r.Users)
+            .Include(r => r.RoleUsers)
             .ToListAsync();
 
         public override async Task<Role?> GetByIdAsync(int id) =>
             await appContext.Set<Role>()
             .AsNoTracking()
-            .Include(r => r.Users)
+            .Include(r => r.RoleUsers)
             .FirstOrDefaultAsync(r => r.Id == id);
     }
 }
