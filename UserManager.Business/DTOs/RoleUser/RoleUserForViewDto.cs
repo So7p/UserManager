@@ -3,6 +3,7 @@
     public class RoleUserForViewDto
     {
         public int Id { get; set; }
+        public int UserId { get; set; }
         public string UserName { get; set; } = null!;
         public int UserAge { get; set; }
         public string UserEmail { get; set; } = null!;
