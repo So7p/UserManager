@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using UserManager.Business.Services.Contracts;
@@ -17,7 +18,10 @@ namespace UserManager.Business.IoC
 
         public static IServiceCollection ConfigureFluentValidation(this IServiceCollection services)
         {
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddFluentValidation(opt =>
+            {
+                opt.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            });
 
             return services;
         }
