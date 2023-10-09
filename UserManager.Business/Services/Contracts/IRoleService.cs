@@ -6,6 +6,7 @@ namespace UserManager.Business.Services.Contracts
     {
         Task<IEnumerable<RoleForViewDto>> GetAllAsync();
         Task<RoleForViewDto?> GetByIdAsync(int id);
+        Task<RoleForViewDto?> GetByRoleNameAsync(string roleName);
         Task CreateAsync(RoleForCreationDto roleForCreationDto);
         Task UpdateAsync(RoleForUpdateDto roleForUpdateDto);
         Task DeleteAsync(int id);

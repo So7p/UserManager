@@ -37,6 +37,24 @@ namespace UserManager.Business.Services.Implementation
             return userViewModel;
         }
 
+        public async Task<IEnumerable<UserForViewDto>> GetByUserNameAsync(string userName)
+        {
+            var users = await _userRepository.GetByUserNameAsync(userName);
+
+            var usersViewModels = _mapper.Map<IEnumerable<UserForViewDto>>(users);
+
+            return usersViewModels;
+        }
+
+        public async Task<IEnumerable<UserForViewDto>> GetByAgeAsync(int age)
+        {
+            var users = await _userRepository.GetByAgeAsync(age);
+
+            var usersViewModels = _mapper.Map<IEnumerable<UserForViewDto>>(users);
+
+            return usersViewModels;
+        }
+
         public async Task<UserForViewDto?> GetByEmailAsync(string email)
         {
             var user = await _userRepository.GetByEmailAsync(email)
