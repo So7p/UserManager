@@ -35,8 +35,6 @@ namespace UserManager.Business.Validators.UserValidators
 
                 RuleFor(u => u.Email.Length)
                     .LessThan(41).WithMessage("The length of the Email cannot be more than 40 characters.");
-
-                // Need unique Email check
             });
         }
     }

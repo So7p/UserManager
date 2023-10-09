@@ -22,5 +22,11 @@ namespace UserManager.Data.Repositories.Implementation
             .AsNoTracking()
             .Include(r => r.RoleUsers)
             .FirstOrDefaultAsync(r => r.Id == id);
+
+        public async Task<Role?> GetByRoleNameAsync(string roleName) =>
+            await appContext.Set<Role>()
+            .AsNoTracking()
+            .Include(r => r.RoleUsers)
+            .FirstOrDefaultAsync(r => r.RoleName == roleName);
     }
 }

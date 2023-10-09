@@ -37,6 +37,56 @@ namespace UserManager.Business.Services.Implementation
             return roleUserViewModel;
         }
 
+        public async Task<IEnumerable<RoleUserForViewDto>> GetByUserIdAsync(int userId)
+        {
+            var roleUsers = await _roleUserRepository.GetAllAsync();
+
+            var roleUsersViewModels = _mapper.Map<IEnumerable<RoleUserForViewDto>>(roleUsers)
+                .Where(r => r.UserId == userId);
+
+            return roleUsersViewModels;
+        }
+
+        public async Task<IEnumerable<RoleUserForViewDto>> GetByUserNameAsync(string userName)
+        {
+            var roleUsers = await _roleUserRepository.GetAllAsync();
+
+            var roleUsersViewModels = _mapper.Map<IEnumerable<RoleUserForViewDto>>(roleUsers)
+                .Where(r => r.UserName == userName);
+
+            return roleUsersViewModels;
+        }
+
+        public async Task<IEnumerable<RoleUserForViewDto>> GetByUserAgeAsync(int userAge)
+        {
+            var roleUsers = await _roleUserRepository.GetAllAsync();
+
+            var roleUsersViewModels = _mapper.Map<IEnumerable<RoleUserForViewDto>>(roleUsers)
+                .Where(r => r.UserAge == userAge);
+
+            return roleUsersViewModels;
+        }
+
+        public async Task<IEnumerable<RoleUserForViewDto>> GetByUserEmailAsync(string userEmail)
+        {
+            var roleUsers = await _roleUserRepository.GetAllAsync();
+
+            var roleUsersViewModels = _mapper.Map<IEnumerable<RoleUserForViewDto>>(roleUsers)
+                .Where(r => r.UserEmail == userEmail);
+
+            return roleUsersViewModels;
+        }
+
+        public async Task<IEnumerable<RoleUserForViewDto>> GetByUserRoleNameAsync(string userRoleName)
+        {
+            var roleUsers = await _roleUserRepository.GetAllAsync();
+
+            var roleUsersViewModels = _mapper.Map<IEnumerable<RoleUserForViewDto>>(roleUsers)
+                .Where(r => r.UserRoleName == userRoleName);
+
+            return roleUsersViewModels;
+        }
+
         public async Task CreateAsync(RoleUserForCreationDto roleUserForCreationDto)
         {
             if (roleUserForCreationDto == null)

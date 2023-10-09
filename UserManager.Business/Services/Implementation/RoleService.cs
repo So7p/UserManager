@@ -37,6 +37,16 @@ namespace UserManager.Business.Services.Implementation
             return roleViewModel;
         }
 
+        public async Task<RoleForViewDto?> GetByRoleNameAsync(string roleName)
+        {
+            var role = await _roleRepository.GetByRoleNameAsync(roleName)
+                ?? throw new NotFoundException("Role was not found.");
+
+            var roleViewModel = _mapper.Map<RoleForViewDto>(role);
+
+            return roleViewModel;
+        }
+
         public async Task CreateAsync(RoleForCreationDto roleForCreationDto)
         {
             if (roleForCreationDto == null)

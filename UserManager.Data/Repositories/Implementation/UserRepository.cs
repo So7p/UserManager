@@ -23,6 +23,20 @@ namespace UserManager.Data.Repositories.Implementation
             .Include(u => u.RoleUsers)
             .FirstOrDefaultAsync(u => u.Id == id);
 
+        public async Task<IEnumerable<User>> GetByUserNameAsync(string userName) =>
+            await appContext.Set<User>()
+            .AsNoTracking()
+            .Include(u => u.RoleUsers)
+            .Where(u => u.Name == userName)
+            .ToListAsync();
+
+        public async Task<IEnumerable<User>> GetByAgeAsync(int age) =>
+            await appContext.Set<User>()
+            .AsNoTracking()
+            .Include(u => u.RoleUsers)
+            .Where(u => u.Age == age)
+            .ToListAsync();
+
         public async Task<User?> GetByEmailAsync(string email) =>
             await appContext.Set<User>()
             .AsNoTracking()
